@@ -1,0 +1,54 @@
+<div class="contact-detail">
+  <div class="border">
+    <!-- <div class="contact-detail__icon-container">
+      <img
+        class="contact-detail__icon-container__icon"
+        src="assets/icons/login.png"
+        alt="contact icon"
+      />
+    </div> -->
+    <div class="contact-detail__info">
+      <p class="contact-detail__info_data">
+        <span class="contact-detail__info_data_header">Name:</span>
+        {{ contact.firstName }}
+      </p>
+      <p class="contact-detail__info_data">
+        <span class="contact-detail__info_data_header">Surname:</span>
+        {{ contact.lastName }}
+      </p>
+      <p class="contact-detail__info_data">
+        <span class="contact-detail__info_data_header">Pnone:</span>
+        {{ contact.phoneNumber }}
+      </p>
+      <p class="contact-detail__info_data">
+        <span class="contact-detail__info_data_header">Birth Date:</span>
+        {{ contact.birthDate }}
+      </p>
+      <p class="contact-detail__info_data">
+        <span class="contact-detail__info_data_header">Email:</span>
+        {{ contact.email }}
+      </p>
+      <p class="contact-detail__info_data">
+        <span class="contact-detail__info_data_header">Address:</span>
+        {{ contact.address }}
+      </p>
+    </div>
+
+    <div class="contact-detail__buttons-container">
+      <app-custom-button
+        label="Edit"
+        type="primary"
+        [disabled]="false"
+        (clickEvent)="navigateToEditForm(contact.id)"
+      >
+      </app-custom-button>
+      <app-custom-button
+        label="Go Back"
+        type="secondary"
+        [disabled]="false"
+        (clickEvent)="onCancel()"
+      >
+      </app-custom-button>
+    </div>
+  </div>
+</div>

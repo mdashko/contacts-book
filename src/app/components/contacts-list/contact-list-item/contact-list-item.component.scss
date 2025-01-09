@@ -1,0 +1,32 @@
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  height: 50px;
+  border: 1px solid #5ac2db;
+  border-radius: 10px;
+  background-color: transparent;
+  margin: 5px 0;
+  margin-left: 20%;
+  padding: 10px 15px;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &__name {
+    display: flex;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__phone {
+    color: grey;
+    font-size: 18px;
+  }
+
+  p {
+    margin: 0;
+  }
+}

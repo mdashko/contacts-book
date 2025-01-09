@@ -1,0 +1,25 @@
+<div class="contacts-list">
+  <div class="contacts-list__container">
+    <div class="contacts-list__container__header">
+      <app-custom-button
+        label="Add Contact"
+        type="primary"
+        [disabled]="false"
+        (clickEvent)="navigateToAddContact()"
+      >
+      </app-custom-button>
+
+      <app-custom-input
+        placeholder="Search for contacts"
+        [(value)]="searchQuery"
+        (valueChange)="onSearchChange($event)"
+      ></app-custom-input>
+    </div>
+
+    <div class="contacts-list__container__list">
+      <div *ngFor="let contact of contacts; index as i">
+        <app-contact-list-item [contact]="contact"></app-contact-list-item>
+      </div>
+    </div>
+  </div>
+</div>

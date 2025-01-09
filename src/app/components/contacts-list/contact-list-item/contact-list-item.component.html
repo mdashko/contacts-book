@@ -1,0 +1,20 @@
+<div *ngIf="contact" class="contact-item">
+  <div class="contact-item__icon">
+    <img src="assets/icons/login.png" alt="contact icon" />
+  </div>
+  <div class="contact-item__name">
+    <p>
+      {{ capitalize(contact.firstName) }} {{ capitalize(contact.lastName) }}
+    </p>
+  </div>
+
+  <div class="contact-item__phone">
+    <p>{{ contact.phoneNumber }}</p>
+  </div>
+
+  <div class="contact-item__buttons">
+    <mat-icon (click)="navigateToContactDetails(contact.id)">person</mat-icon>
+    <mat-icon (click)="navigateToEditForm(contact.id)">edit</mat-icon>
+    <mat-icon (click)="onDeleteContact(contact.id)">delete</mat-icon>
+  </div>
+</div>

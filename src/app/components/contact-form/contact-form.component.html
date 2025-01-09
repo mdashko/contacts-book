@@ -1,0 +1,143 @@
+<div class="contact-form">
+  <p>Create New Contact</p>
+  <form
+    class="contact-form__form"
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="contact-form__form__control-conatiner">
+      <label for="firstName">Name:</label>
+      <div>
+        <input
+          class="contact-form__form__control-conatiner__input"
+          id="firstName"
+          formControlName="firstName"
+        />
+        <div
+          style="margin: 5px 10px"
+          *ngIf="
+            userForm.get('firstName')?.invalid &&
+            userForm.get('firstName')?.touched
+          "
+        >
+          The name is mandatory and can contain only letters.
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form__form__control-conatiner">
+      <label for="lastName">Surname:</label>
+      <div>
+        <input
+          class="contact-form__form__control-conatiner__input"
+          id="lastName"
+          formControlName="lastName"
+        />
+        <div
+          style="margin: 5px 10px"
+          *ngIf="
+            userForm.get('lastName')?.invalid &&
+            userForm.get('lastName')?.touched
+          "
+        >
+          The surname is mandatory and can contain only letters.
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form__form__control-conatiner">
+      <label for="phoneNumber">Phone:</label>
+      <div>
+        <input
+          class="contact-form__form__control-conatiner__input"
+          id="phoneNumber"
+          formControlName="phoneNumber"
+        />
+        <div
+          style="margin: 5px 10px"
+          *ngIf="
+            userForm.get('phoneNumber')?.invalid &&
+            userForm.get('phoneNumber')?.touched
+          "
+        >
+          Enter a valid phone number.
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form__form__control-conatiner">
+      <label for="birthDate">Birth Date:</label>
+      <div>
+        <input
+          class="contact-form__form__control-conatiner__input"
+          id="birthDate"
+          type="date"
+          formControlName="birthDate"
+        />
+        <div
+          style="margin: 5px 10px"
+          *ngIf="
+            userForm.get('birthDate')?.invalid &&
+            userForm.get('birthDate')?.touched
+          "
+        >
+          Date of birth is mandatory.
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form__form__control-conatiner">
+      <label for="email">Email:</label>
+      <div>
+        <input
+          class="contact-form__form__control-conatiner__input"
+          id="email"
+          formControlName="email"
+        />
+        <div
+          style="margin: 5px 10px"
+          *ngIf="
+            userForm.get('email')?.invalid && userForm.get('email')?.touched
+          "
+        >
+          Enter a valid email address.
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form__form__control-conatiner">
+      <label for="address">Address:</label>
+      <div>
+        <input
+          class="contact-form__form__control-conatiner__input"
+          id="address"
+          formControlName="address"
+        />
+        <div
+          style="margin: 5px 10px"
+          *ngIf="
+            userForm.get('address')?.invalid && userForm.get('address')?.touched
+          "
+        >
+          The address is mandatory.
+        </div>
+      </div>
+    </div>
+    <div class="contact-form__form__buttons-container">
+      <app-custom-button
+        label="Submit"
+        type="primary"
+        [disabled]="userForm.invalid"
+        (clickEvent)="onSubmit()"
+      >
+      </app-custom-button>
+      <app-custom-button
+        label="Cancel"
+        type="secondary"
+        [disabled]="false"
+        (clickEvent)="onCancel()"
+      >
+      </app-custom-button>
+    </div>
+  </form>
+</div>
