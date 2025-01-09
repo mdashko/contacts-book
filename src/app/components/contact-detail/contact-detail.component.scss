@@ -1,3 +1,5 @@
+@import "src/styles.scss";
+
 .contact-detail {
   background-color: #fff;
   width: 100%;
@@ -5,7 +7,7 @@
   @include flex(column, center, center);
 
   &__info {
-	@include flex(column, flex-start, center);
+    @include flex(column, flex-start, center);
     &_data {
       font-size: 20px;
       &_header {
@@ -21,7 +23,7 @@
 
 .border {
   width: 500px;
-  height: 600px;
+  height: 60%;
   padding: 6%;
   background-color: #0056b3;
   color: #fff;
