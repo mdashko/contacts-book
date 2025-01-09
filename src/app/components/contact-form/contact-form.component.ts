@@ -37,7 +37,7 @@ export class ContactFormComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(2),
-		  Validators.maxLength(10),
+          Validators.maxLength(10),
           Validators.pattern('^[a-zA-Zа-яА-Я]+$'),
         ],
       ],
@@ -46,7 +46,7 @@ export class ContactFormComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(2),
-		  Validators.maxLength(10),
+          Validators.maxLength(10),
           Validators.pattern('^[a-zA-Zа-яА-Я]+$'),
         ],
       ],
@@ -81,6 +81,6 @@ export class ContactFormComponent implements OnInit {
   }
 
   private generateId(): string {
-    return '_' + Math.random().toString(36).substr(2, 9);
+    return '_' + Math.random().toString(36).substring(2, 11);
   }
 }

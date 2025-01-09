@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Contact } from 'src/app/interfaces/contact';
 import { ContactService } from 'src/app/services/contact-service/contact.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ContactService } from 'src/app/services/contact-service/contact.service
   styleUrls: ['./contact-detail.component.scss'],
 })
 export class ContactDetailComponent implements OnInit {
-  contact: any;
+  contact!: Contact;
 
   constructor(
     private route: ActivatedRoute,
@@ -18,8 +19,10 @@ export class ContactDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
-    this.contact = this.contactService.getContacts().find((c) => c.id === id);
-    console.log(this.contact);
+    const contact = this.contactService.getContacts().find((c) => c.id === id);
+    if (contact) {
+      this.contact = contact;
+    }
   }
 
   navigateToEditForm(id: string) {
