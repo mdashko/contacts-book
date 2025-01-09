@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Contact } from 'src/app/interfaces/contact';
+import { DataService } from '../data-service/data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,10 +9,12 @@ import { Contact } from 'src/app/interfaces/contact';
 export class ContactService {
   private contactsKey = 'contacts';
 
-  private contactsSubject = new BehaviorSubject<Contact[]>(this.readFromStorage());
+  private contactsSubject = new BehaviorSubject<Contact[]>(
+    this.readFromStorage()
+  );
   contacts$ = this.contactsSubject.asObservable();
 
-  constructor() {}
+  constructor(private dataService: DataService) {}
 
   private readFromStorage(): Contact[] {
     const contacts = localStorage.getItem(this.contactsKey);
@@ -23,12 +26,18 @@ export class ContactService {
   }
 
   getContacts(): Contact[] {
-    return this.readFromStorage();
+    const contacts = this.readFromStorage();
+
+    if (!contacts.length) {
+      this.populateList();
+      return this.readFromStorage();
+    }
+    return contacts;
   }
 
   addContact(contact: Contact): void {
     const contacts = this.getContacts();
-    if (contacts.some(c => c.id === contact.id)) {
+    if (contacts.some((c) => c.id === contact.id)) {
       throw new Error('A contact with this ID already exists.');
     }
     contacts.push(contact);
@@ -36,9 +45,17 @@ export class ContactService {
     this.contactsSubject.next(contacts);
   }
 
+  populateList(): void {
+    this.dataService.getData().subscribe((data) => {
+      const contacts = data;
+      this.writeToStorage(contacts);
+      this.contactsSubject.next(contacts);
+    });
+  }
+
   updateContact(updatedContact: Contact): void {
     const contacts = this.getContacts();
-    const index = contacts.findIndex(c => c.id === updatedContact.id);
+    const index = contacts.findIndex((c) => c.id === updatedContact.id);
     if (index !== -1) {
       contacts[index] = updatedContact;
       this.writeToStorage(contacts);
@@ -47,7 +64,7 @@ export class ContactService {
   }
 
   deleteContact(id: string): void {
-    const contacts = this.getContacts().filter(c => c.id !== id);
+    const contacts = this.getContacts().filter((c) => c.id !== id);
     this.writeToStorage(contacts);
     this.contactsSubject.next(contacts);
   }
@@ -57,10 +74,11 @@ export class ContactService {
       return this.getContacts();
     }
     const contacts = this.getContacts();
-    return contacts.filter(contact =>
-      contact.firstName.toLowerCase().includes(query.toLowerCase()) ||
-      contact.lastName.toLowerCase().includes(query.toLowerCase()) ||
-      contact.phoneNumber.includes(query)
+    return contacts.filter(
+      (contact) =>
+        contact.firstName.toLowerCase().includes(query.toLowerCase()) ||
+        contact.lastName.toLowerCase().includes(query.toLowerCase()) ||
+        contact.phoneNumber.includes(query)
     );
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contact } from 'src/app/interfaces/contact';
 import { ContactService } from 'src/app/services/contact-service/contact.service';
+import { DataService } from 'src/app/services/data-service/data.service';
 @Component({
   selector: 'app-contacts-list',
   templateUrl: './contacts-list.component.html',
@@ -11,7 +12,11 @@ export class ContactsListComponent implements OnInit {
   public contacts: Contact[] = [];
   searchQuery = '';
 
-  constructor(private contactService: ContactService, private router: Router) {}
+  constructor(
+    private contactService: ContactService,
+   
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.contacts = this.contactService.getContacts();
@@ -26,10 +31,8 @@ export class ContactsListComponent implements OnInit {
     this.router.navigate(['/contacts/form']);
   }
 
-
   onSearchChange(newValue: string) {
-	this.contacts = this.contactService.searchContacts(newValue);
-	  
+    this.contacts = this.contactService.searchContacts(newValue);
   }
 
   onDelete(id: string): void {
@@ -37,5 +40,7 @@ export class ContactsListComponent implements OnInit {
     this.contacts = this.contactService.getContacts();
   }
 
-  
+  fetchData() {
+   
+  }
 }

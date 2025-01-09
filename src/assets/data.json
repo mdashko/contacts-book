@@ -1,0 +1,38 @@
+[
+  {
+    "firstName": "Marta",
+    "lastName": "Oleksiuk",
+    "phoneNumber": "0660538129",
+    "birthDate": "2025-01-06",
+    "email": "13martadashko13@gmail.com",
+    "address": "bbbbbb",
+    "id": "_eydz9dpmi"
+  },
+  {
+    "firstName": "Michael",
+    "lastName": "Corleone",
+    "phoneNumber": "380984567876",
+    "birthDate": "1992-02-09",
+    "email": "m.corleone@mail.com",
+    "address": "Sicilia, Italy",
+    "id": "_uqdlxs7oq"
+  },
+  {
+    "firstName": "Duditto",
+    "lastName": "Alcazare",
+    "phoneNumber": "380652345345",
+    "birthDate": "2000-05-03",
+    "email": "duditto@gmail.com",
+    "address": "Singapore",
+    "id": "_1shxsj91a"
+  },
+  {
+    "firstName": "John",
+    "lastName": "Gold",
+    "phoneNumber": "+777777777777",
+    "birthDate": "2001-01-09",
+    "email": "john.gold@gmial.com",
+    "address": "USA",
+    "id": "_jdxpeht24"
+  }
+]

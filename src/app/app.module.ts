@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,8 +13,6 @@ import { ContactService } from 'src/app/services/contact-service/contact.service
 import { SharedModule } from './shared/shared.module';
 import { ContactListItemComponent } from './components/contacts-list/contact-list-item/contact-list-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AlertModule } from 'ngx-bootstrap/alert';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,10 +22,10 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     ContactListItemComponent,
   ],
   imports: [
-	AlertModule.forRoot(),
     BrowserModule,
     SharedModule,
     MatIconModule,
+	HttpClientModule,
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
